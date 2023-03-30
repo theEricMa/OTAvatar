@@ -55,6 +55,11 @@ python -m torch.distributed.launch --nproc_per_node=4 --master_port 12346 train_
 --name otavatar
 ```
 
+Or simply run,
+```
+sh scripts/train.sh
+```
+
 ### Acknowledgement
 We appreciate the model or code from [EG3D](https://github.com/NVlabs/eg3d), [PIRenderer](https://github.com/RenYurui/PIRender), [StyleHEAT](https://github.com/FeiiYin/StyleHEAT), [EG3D-projector](https://github.com/oneThousand1000/EG3D-projector), .
 
