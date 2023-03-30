@@ -6,4 +6,4 @@ Code with be released soon
 
 ## Get started
 ### Pre-trained Models
-Download and copy EG3D FFHQ 512 \prod 512 model from (download)[https://catalog.ngc.nvidia.com/orgs/nvidia/teams/research/models/eg3d] page to the directory 'checkpoints'
+Download and copy EG3D FFHQ 512 $\times$ prod 512 model from (download)[https://catalog.ngc.nvidia.com/orgs/nvidia/teams/research/models/eg3d] page to the directory 'checkpoints'
