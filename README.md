@@ -1,10 +1,14 @@
 # OTAvatar : One-shot Talking Face Avatar with Controllable Tri-plane Rendering
-## Paper | [Video Youtube](https://youtu.be/qpIoMYFr7Aw) | Project Page 
-Code with be released soon
+## [Paper](https://arxiv.org/abs/2303.14662) | [Video Youtube](https://youtu.be/qpIoMYFr7Aw) | Project Page 
 
-<img src="figures/demoFigure.pdf" width = "500px"/>
+Code is under revision and uploading
+
 
 ## Get started
 ### Pre-trained Models
 Create 'pretrained' folder under the root directory. 
-Download and copy EG3D FFHQ 512$\times$512 model from offical (webpage)[https://catalog.ngc.nvidia.com/orgs/nvidia/teams/research/models/eg3d] to the directory 'checkpoints'
+
+Download and copy EG3D FFHQ 512$\times$512 model from offical [webpage](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/research/models/eg3d) to the directory 'checkpoints'
+
+
+
