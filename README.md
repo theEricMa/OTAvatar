@@ -3,3 +3,9 @@
 Code with be released soon
 
 <img src="figures/demoFigure.pdf" width = "500px"/>
+
+## Get started
+### Pre-trained Models
+'''shell
+makedir pretrained
+'''
