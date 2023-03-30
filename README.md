@@ -61,7 +61,7 @@ sh scripts/train.sh
 ```
 
 ### Acknowledgement
-We appreciate the model or code from [EG3D](https://github.com/NVlabs/eg3d), [PIRenderer](https://github.com/RenYurui/PIRender), [StyleHEAT](https://github.com/FeiiYin/StyleHEAT), [EG3D-projector](https://github.com/oneThousand1000/EG3D-projector), .
+We appreciate the model or code from [EG3D](https://github.com/NVlabs/eg3d), [PIRenderer](https://github.com/RenYurui/PIRender), [StyleHEAT](https://github.com/FeiiYin/StyleHEAT), [EG3D-projector](https://github.com/oneThousand1000/EG3D-projector).
 
 ### Citation
 If you find this work helpful, please cite:
