@@ -49,7 +49,7 @@ camera_optimizer:
     adam_beta2: 0.9999
     
 trainer:
-    type: trainers.eg3dixr3_trainer::FaceTrainer
+    type: trainers.decouple_by_invert::FaceTrainer
     use_sr: True
     sr_iters: 10
     accum_ratio: 
@@ -149,7 +149,7 @@ gen:
     checkpoint: 'pretrained/ffhqrebalanced512-64.pth'
 
 warp:
-    type: models.refiner::VideoCodeBook3
+    type: models.controller::VideoCodeBook
     param: 
       descriptor_nc: 256
       mapping_layers: 3
