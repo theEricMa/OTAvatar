@@ -1,5 +1,5 @@
 # OTAvatar : One-shot Talking Face Avatar with Controllable Tri-plane Rendering
-## [Paper](https://arxiv.org/abs/2303.14662) | [Video Youtube](https://youtu.be/qpIoMYFr7Aw) | Project Page 
+## [Paper](https://arxiv.org/abs/2303.14662) | [Video](https://youtu.be/qpIoMYFr7Aw) | Project Page 
 
 Code is under revision and uploading
 
@@ -12,7 +12,17 @@ Download and copy EG3D FFHQ model from offical [webpage](https://catalog.ngc.nvi
 
 
 
+### Acknowledgement
+We appreciate the 
 
-
-
+### Citation
+If you find this work helpful, please cite:
+```
+@article{ma2023otavatar,
+  title={OTAvatar: One-shot Talking Face Avatar with Controllable Tri-plane Rendering},
+  author={Ma, Zhiyuan and Zhu, Xiangyu and Qi, Guojun and Lei, Zhen and Zhang, Lei},
+  journal={arXiv preprint arXiv:2303.14662},
+  year={2023}
+}
+```
 
