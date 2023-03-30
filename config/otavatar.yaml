@@ -1,0 +1,180 @@
+distributed: True
+image_to_tensorboard: True
+snapshot_save_iter: 100
+snapshot_save_epoch: 5
+snapshot_save_start_iter: 100
+snapshot_save_start_epoch: 0
+image_save_iter: 100
+max_epoch: 2000
+logging_iter: 10
+results_dir: ./eval_results
+
+w_samples: 600
+
+warp_optimizer:
+    type: adamw
+    lr: 0.001
+    refine_only: False
+    adam_beta1: 0.5
+    adam_beta2: 0.999
+    lr_policy:
+        iteration_mode: True
+        type: step
+        step_size: 10000
+        gamma: 0.2
+    weight_decay: 1
+
+inverse_optimizer:
+    type: adam
+    lr: 0.01
+    adam_beta1: 0.9
+    adam_beta2: 0.999
+
+gen_optimizer:
+    type: adam
+    lr: 0.0001
+    adam_beta1: 0.9
+    adam_beta2: 0.9999
+    sr_only: False
+    lr_policy:
+        iteration_mode: True
+        type: step
+        step_size: 10000
+        gamma: 0.2
+
+camera_optimizer:
+    type: adamw
+    lr: 0.01
+    adam_beta1: 0.9
+    adam_beta2: 0.9999
+    
+trainer:
+    type: trainers.eg3dixr3_trainer::FaceTrainer
+    use_sr: True
+    sr_iters: 10
+    accum_ratio: 
+      G: 0.95
+      Warp: 0.95
+    inversion:
+      iterations: 100
+      warp_lr_mult: 100
+      asynchronous_update: 'successively' # null #  # alternatively
+      warp_update_iters: 10
+    loss_weight:
+      mask_rate: 1
+      inverse: 1.
+      refine: 1.
+      local: 10.
+      TV: 1.
+      monotonic: 1.
+      pixel: 1
+      id: 1.
+      p_norm: 0.
+      a_norm: 0.
+      a_mutual: 0.
+    vgg_param_lr:
+      network: vgg19
+      layers: ['relu_1_1', 'relu_2_1', 'relu_3_1', 'relu_4_1', 'relu_5_1']
+      use_style_loss: True
+      num_scales: 2
+      style_to_perceptual: 250
+    vgg_param_sr:
+      network: vgg19
+      layers: ['relu_1_1', 'relu_2_1', 'relu_3_1', 'relu_4_1', 'relu_5_1']
+      use_style_loss: True
+      num_scales: 4
+      style_to_perceptual: 250     
+    init:
+      type: 'xavier'
+      gain: 0.02
+      
+gen:
+    type: models.triplane::TriPlaneGenerator
+    param:
+      z_dim: 512
+      w_dim: 512
+      c_dim: 25
+      channel_base: 32768
+      channel_max: 512
+      # fused_modconv_default: 'inference_only'
+      mapping_kwargs:
+        num_layers: 2
+      rendering_kwargs:
+        depth_resolution: 48
+        depth_resolution_importance: 48
+        ray_start: 2.25
+        ray_end: 3.3
+        box_warp: 1
+        avg_camera_radius: 2.7
+        avg_camera_pivot: [0, 0, 0.2]
+        image_resolution: 512
+        disparity_space_sampling: False
+        clamp_mode: 'softplus'
+        superresolution_module: 'models.superresolution.SuperresolutionHybrid8XDC'
+        c_gen_conditioning_zero: False
+        c_scale: 1.0
+        superresolution_noise_mode: 'none'
+        density_reg: 0.25
+        density_reg_p_dist: 0.004
+        reg_type: 'l1'
+        decoder_lr_mul: 1.0
+        sr_antialias: True
+      num_fp16_res: 0
+      sr_num_fp16_res: 4
+      sr_kwargs:
+        channel_base: 32768
+        channel_max: 512
+        fused_modconv_default: 'inference_only'
+      conv_clamp: null
+      img_resolution: 512
+      img_channels: 3
+    inference:
+      depth_resolution: 48
+      depth_resolution_importance: 48
+      ray_start: 2.25
+      ray_end: 3.3
+      box_warp: 1
+      image_resolution: 512
+      disparity_space_sampling: False
+      clamp_mode: 'softplus'
+      superresolution_module: 'training.superresolution.SuperresolutionHybrid8XDC'
+      c_gen_conditioning_zero: False
+      c_scale: 1.0
+      superresolution_noise_mode: 'none'
+      density_reg: 0.25
+      density_reg_p_dis: 0.004
+      reg_type: 'l1'
+      decoder_lr_mul: 1.0
+      sr_antialias: True
+    checkpoint: 'pretrained/ffhqrebalanced512-64.pth'
+
+warp:
+    type: models.refiner::VideoCodeBook3
+    param: 
+      descriptor_nc: 256
+      mapping_layers: 3
+      mlp_layers: 5
+      if_use_pose: True
+      if_plus_scaling: False
+      if_short_cut: True
+      directions: 20
+    checkpoint: null #'pretrained/iter_001100_2.pt'
+
+# Data options.
+data:
+    type: data.vox_dataset_eg3d_hdtf_m_inv_eyes::HDTFDataset
+    path: ./datasets/hdtf_lmdb_inv
+    num_workers: 1 # 8
+    resolution: 512
+    semantic_radius: 13
+    frames_each_video: 2
+    train:
+      batch_size: 8
+      distributed: True
+      prefetch_factor: 1
+    val:
+      batch_size: 8
+      distributed: True
+      prefetch_factor: 1
+
+
