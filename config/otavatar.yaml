@@ -162,18 +162,18 @@ warp:
 
 # Data options.
 data:
-    type: data.vox_dataset_eg3d_hdtf_m_inv_eyes::HDTFDataset
+    type: data.dataset::HDTFDataset
     path: ./datasets/hdtf_lmdb_inv
     num_workers: 1 # 8
     resolution: 512
     semantic_radius: 13
     frames_each_video: 2
     train:
-      batch_size: 8
+      batch_size: 4 # in original paper, the batch size is set to be 8, adjust it to reach you maximum during training
       distributed: True
       prefetch_factor: 1
     val:
-      batch_size: 8
+      batch_size: 4
       distributed: True
       prefetch_factor: 1
 

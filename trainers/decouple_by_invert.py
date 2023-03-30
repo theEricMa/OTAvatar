@@ -59,25 +59,8 @@ class FaceTrainer(BaseTrainer):
             self.train_G = True
             print('We train Generator')
 
-        self.build_PCA('pretrained/PCA.npz')
         self.ws_stdv = torch.ones_like(torch.from_numpy(np.load('pretrained/ws_std.npy')))
 
-    def build_PCA(self, PCA_path):
-        
-        if not os.path.isfile(PCA_path):
-            with torch.no_grad():
-                pulse_space = torch.nn.LeakyReLU(5)(self.sample_zs(batch_size=100000, if_w_only=True))[:,0].cpu().numpy()
-            from util.PCA_utils import IPCAEstimator
-            transformer = IPCAEstimator(512)
-            X_mean = pulse_space.mean(0)
-            transformer.fit(pulse_space - X_mean)
-            X_comp, X_stdev, X_var_ratio = transformer.get_components()
-            np.savez(PCA_path, X_mean=X_mean, X_comp=X_comp, X_stdev=X_stdev, X_var_ratio=X_var_ratio)
-        PCA_model = np.load(PCA_path)
-
-        self.X_mean = torch.from_numpy(PCA_model['X_mean']).float()
-        self.X_comp = torch.from_numpy(PCA_model['X_comp']).float()
-        self.X_stdev = torch.from_numpy(PCA_model['X_stdev']).float()       
     
     def _init_loss(self, opt):
         self._assign_criteria(
@@ -141,11 +124,6 @@ class FaceTrainer(BaseTrainer):
             opt.trainer.loss_weight.TV
         )
 
-        self._assign_criteria(
-            'p_norm',
-            self.p_norm_loss,
-            opt.trainer.loss_weight.p_norm
-        )
 
         self._assign_criteria(
             'pixel',
@@ -193,14 +171,6 @@ class FaceTrainer(BaseTrainer):
     def _assign_criteria(self, name, criterion, weight):
         self.criteria[name] = criterion
         self.weights[name] = weight
-
-    def p_norm_loss(self, latent_in):
-        device = latent_in.device
-        B = latent_in.shape[0]
-        latent_p_norm = (torch.nn.LeakyReLU(negative_slope=5)(latent_in) - self.X_mean.to(device)).bmm(
-                self.X_comp.T.to(device).unsqueeze(0).repeat(B, 1, 1)
-            ) / self.X_stdev.to(device)
-        return latent_p_norm.pow(2).mean()
 
     def _percept_loss(self, predict_images, target_images, percept_fn, same_size_as_pred = True, target_keypoints = None, mask_rate = 1):
         if same_size_as_pred:
@@ -391,7 +361,6 @@ class FaceTrainer(BaseTrainer):
             'inverse_local': [],
             'inverse_monotonic':[],
             'inverse_TV': [],
-            'inverse_p_norm':[],
             'inverse_pixel':[],
             'inverse_a_norm': [],
             'inverse_a_mutual': [],
@@ -486,9 +455,6 @@ class FaceTrainer(BaseTrainer):
             
             # a_norm loss
             a_norm_loss = torch.ones_like(local_loss)
-            
-            # p_norm loss
-            p_norm_loss = self.criteria['p_norm'](ws)
 
             # a_mutual loss
             a_mutual_loss = torch.zeros_like(local_loss)
@@ -551,7 +517,6 @@ class FaceTrainer(BaseTrainer):
                    self.weights['local'] * local_loss + \
                    self.weights['monotonic'] * monotonic_loss + \
                    self.weights['TV'] * TV_loss + \
-                   self.weights['p_norm'] * p_norm_loss + \
                    self.weights['pixel'] * pixel_loss + \
                    self.weights['a_norm'] * a_norm_loss + \
                    self.weights['a_mutual'] * a_mutual_loss + \
@@ -611,7 +576,6 @@ class FaceTrainer(BaseTrainer):
             inverse_losses['inverse_local'].append(local_loss.detach().cpu())
             inverse_losses['inverse_monotonic'].append(monotonic_loss.detach().cpu())
             inverse_losses['inverse_TV'].append(TV_loss.detach().cpu())
-            inverse_losses['inverse_p_norm'].append(p_norm_loss.detach().cpu())
             inverse_losses['inverse_pixel'].append(pixel_loss.detach().cpu())
             inverse_losses['inverse_a_mutual'].append(a_mutual_loss.detach().cpu())
             inverse_losses['inverse_a_norm'].append(a_norm_loss.detach().cpu())
