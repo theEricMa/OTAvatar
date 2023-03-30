@@ -13,7 +13,7 @@ Download and copy EG3D FFHQ model from offical [webpage](https://catalog.ngc.nvi
 
 
 ### Acknowledgement
-We appreciate the 
+We appreciate the model or code from [EG3D-projector](https://github.com/oneThousand1000/EG3D-projector), [PerceptualSimilarity](https://github.com/richzhang/PerceptualSimilarity).
 
 ### Citation
 If you find this work helpful, please cite:
