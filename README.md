@@ -1,8 +1,9 @@
 # OTAvatar : One-shot Talking Face Avatar with Controllable Tri-plane Rendering
-## [Paper](https://arxiv.org/abs/2303.14662) | [Video](https://youtu.be/qpIoMYFr7Aw) | Project Page 
+## [Paper](https://arxiv.org/abs/2303.14662)  |  [Demo](https://youtu.be/qpIoMYFr7Aw)
 
-Code is under revision and uploading
+## Update
 
+April.4: The preprocessed dataset is released, please see the `Data preparation` section. Some missing files are also uploaded.
 
 ## Get started
 ### Environment Setup
@@ -22,7 +23,11 @@ Download and copy EG3D FFHQ model from offical [webpage](https://catalog.ngc.nvi
 Download [`arcface_resnet18.pth`](https://github.com/ronghuaiyang/arcface-pytorch) and save to the `pretrained` directory.
 
 ### Data preparation 
-To be updated
+We upload the processed dataset in [Google Drive](https://drive.google.com/drive/folders/1ce9o_iB5v9oqmxop3Qn-pCXP60YdxURq?usp=share_link) and [Baidu Netdisk](https://pan.baidu.com/s/1R8j3pLqXsA4qRL7_eTrhQw?pwd=CBSR) (password: CBSR). 
+
+
+
+Generally the processing scripts is a mixture of that in [PIRenderer](https://github.com/RenYurui/PIRender) and [ADNeRF](https://github.com/YudongGuo/AD-NeRF). We plan to further open a new repo to upload our revised preocessing script.
 
 ### Face Animation
 Create the folder `result/otavatar`if it does not exist. Please the model (TODO) under this directory. Run,
