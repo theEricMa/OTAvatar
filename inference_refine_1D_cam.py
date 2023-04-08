@@ -90,15 +90,16 @@ if __name__ == '__main__':
     opt.data.cross_id = args.cross_id
     opt.data.cross_id_target = args.cross_id_target
     if args.multi_view:
-        from data.multiface_video_dataset_inv_fix_target import MultifaceVideoDataset
-        dataset = MultifaceVideoDataset(opt.data, is_inference=True)
-        # opt.trainer.inversion.iterations = 300
+        # TODO: add multi-view dataset
+        raise NotImplementedError
+        # from data.multiface_video_dataset_inv_fix_target import MultifaceVideoDataset
+        # dataset = MultifaceVideoDataset(opt.data, is_inference=True)
     else:
         if args.cross_id_target is not None:
             assert args.cross_id
-            from data.hdtf_video_dataset_inv_fix_target import HDTFVideoDataset
+            from data.hdtf_cross_id import HDTFVideoDataset
         else:
-            from data.hdtf_video_dataset_inv import HDTFVideoDataset
+            from data.dataset import HDTFVideoDataset
         dataset = HDTFVideoDataset(opt.data, is_inference=True)
 
     # create a model

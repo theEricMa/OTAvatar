@@ -1,7 +1,7 @@
 export CUDA_VISIBLE_DEVICES=1
 python -m torch.distributed.launch --nproc_per_node=1 --master_port 12345 inference_refine_1D_cam.py \
---config ./config/config/otavatar.yaml \
---name config/otavatar.yaml \
+--config ./config/otavatar.yaml \
+--name result/otavatar/animation \
 --no_resume \
 --which_iter 2000 \
 --image_size 512 \
