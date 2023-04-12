@@ -18,12 +18,12 @@ conda activate otavatar
 
 Create `pretrained` folder under the root directory. 
 
-Download and copy EG3D FFHQ model (named by `ffhqrebalanced512-64.pth`) from [Baidu Netdisk](https://pan.baidu.com/s/1R8j3pLqXsA4qRL7_eTrhQw?pwd=CBSR) (password: CBSR) to the `pretrained` directory. It is the `ffhqrebalanced512-64.pkl` file obtained from [webpage](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/research/models/eg3d), and converted to `.pkl` format using the [pkl2pth](https://github.com/oneThousand1000/EG3D-projector/blob/master/eg3d/convert_pkl_2_pth.py) script.
+Download and copy EG3D FFHQ model (named by `ffhqrebalanced512-64.pth`) from [Baidu Netdisk](https://pan.baidu.com/s/1yXvLR2WvwdamGrWFnNefZw?pwd=CBSR) to the `pretrained` directory. It is the `ffhqrebalanced512-64.pkl` file obtained from [webpage](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/research/models/eg3d), and converted to `.pth` format using the [pkl2pth](https://github.com/oneThousand1000/EG3D-projector/blob/master/eg3d/convert_pkl_2_pth.py) script.
 
 Download [`arcface_resnet18.pth`](https://github.com/ronghuaiyang/arcface-pytorch) and save to the `pretrained` directory.
 
 ### Data preparation 
-We upload the processed dataset in [Baidu Netdisk](https://pan.baidu.com/s/1R8j3pLqXsA4qRL7_eTrhQw?pwd=CBSR) (password: CBSR). Then in the root directory,
+We upload the processed dataset (named by `hdtf_lmdb_inv`) in [Baidu Netdisk](https://pan.baidu.com/s/1yXvLR2WvwdamGrWFnNefZw?pwd=CBSR) (password: CBSR). Then in the root directory,
 
 ```
 mkdir datasets
