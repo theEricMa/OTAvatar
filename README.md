@@ -23,7 +23,7 @@ Download and copy EG3D FFHQ model from offical [webpage](https://catalog.ngc.nvi
 Download [`arcface_resnet18.pth`](https://github.com/ronghuaiyang/arcface-pytorch) and save to the `pretrained` directory.
 
 ### Data preparation 
-We upload the processed dataset in [Google Drive](https://drive.google.com/drive/folders/1ce9o_iB5v9oqmxop3Qn-pCXP60YdxURq?usp=share_link) and [Baidu Netdisk](https://pan.baidu.com/s/1R8j3pLqXsA4qRL7_eTrhQw?pwd=CBSR) (password: CBSR). Then in the root directory,
+We upload the processed dataset in [Google Drive](https://drive.google.com/drive/folders/1yWaDvCHCWc7XUOm1q8ehtfe_o3VKbzK5?usp=sharing) and [Baidu Netdisk](https://pan.baidu.com/s/1R8j3pLqXsA4qRL7_eTrhQw?pwd=CBSR) (password: CBSR). Then in the root directory,
 
 ```
 mkdir datasets
