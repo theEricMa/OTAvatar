@@ -17,7 +17,7 @@ conda activate otavatar
 ```
 
 ### Pre-trained Models
-Download and copy EG3D FFHQ model `ffhqrebalanced512-64.pth` [[Baidu Netdisk](链接: https://pan.baidu.com/s/1_iEqB7qbJBK7DsjlxxW8MA?pwd=CBSR)][[Google Drive](https://drive.google.com/file/d/18RWTfeydaG_qm__rgYKPdxKcS0D_f2mr/view?usp=share_link)] to the `pretrained` directory. It is the `ffhqrebalanced512-64.pkl` file obtained from [webpage](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/research/models/eg3d), and converted to `.pth` format using the [pkl2pth](https://github.com/oneThousand1000/EG3D-projector/blob/master/eg3d/convert_pkl_2_pth.py) script.
+Download and copy EG3D FFHQ model `ffhqrebalanced512-64.pth` [[Baidu Netdisk](https://pan.baidu.com/s/1_iEqB7qbJBK7DsjlxxW8MA?pwd=CBSR)][[Google Drive](https://drive.google.com/file/d/18RWTfeydaG_qm__rgYKPdxKcS0D_f2mr/view?usp=share_link)] to the `pretrained` directory. It is the `ffhqrebalanced512-64.pkl` file obtained from [webpage](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/research/models/eg3d), and converted to `.pth` format using the [pkl2pth](https://github.com/oneThousand1000/EG3D-projector/blob/master/eg3d/convert_pkl_2_pth.py) script.
 
 Download [`arcface_resnet18.pth`](https://github.com/ronghuaiyang/arcface-pytorch) and save to the `pretrained` directory.
 
@@ -32,7 +32,7 @@ mv <your hdtf_lmdb_inv path> datasets/
 Generally the processing scripts is a mixture of that in [PIRenderer](https://github.com/RenYurui/PIRender) and [ADNeRF](https://github.com/YudongGuo/AD-NeRF). We plan to further open a new repo to upload our revised preocessing script.
 
 ### Face Animation
-Create the folder `result/otavatar`if it does not exist. Place the model downloaded from [[Baidu Netdisk](https://pan.baidu.com/s/1bLlXMUT4r76MQc4vywLreg?pwd=CBSR)] or [[Google Drive](https://drive.google.com/file/d/1JW1ieAgeu5qugC41O7zjn7IA49Jfnytt/view?usp=share_link)] under this directory. Run,
+Create the folder `result/otavatar`if it does not exist. Place the model downloaded from [[Baidu Netdisk](https://pan.baidu.com/s/1bLlXMUT4r76MQc4vywLreg?pwd=CBSR)][[Google Drive](https://drive.google.com/file/d/1JW1ieAgeu5qugC41O7zjn7IA49Jfnytt/view?usp=share_link)] under this directory. Run,
 ```
 export CUDA_VISIBLE_DEVICES=0
 python -m torch.distributed.launch --nproc_per_node=1 --master_port 12345 inference_refine_1D_cam.py \
