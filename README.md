@@ -32,7 +32,7 @@ mv <your hdtf_lmdb_inv path> datasets/
 Generally the processing scripts is a mixture of that in [PIRenderer](https://github.com/RenYurui/PIRender) and [ADNeRF](https://github.com/YudongGuo/AD-NeRF). We plan to further open a new repo to upload our revised preocessing script.
 
 ### Face Animation
-Create the folder `result/otavatar`if it does not exist. Please the model (TODO) under this directory. Run,
+Create the folder `result/otavatar`if it does not exist. Please the model downloaded from [Baidu Netdistk](None) or [Google Drive](https://drive.google.com/file/d/1JW1ieAgeu5qugC41O7zjn7IA49Jfnytt/view?usp=share_link) under this directory. Run,
 ```
 export CUDA_VISIBLE_DEVICES=0
 python -m torch.distributed.launch --nproc_per_node=1 --master_port 12345 inference_refine_1D_cam.py \
