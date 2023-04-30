@@ -116,10 +116,13 @@ if __name__ == '__main__':
     trainer.net_Warp_ema.eval()
     trainer.net_G_ema.eval()
 
+    # output_dir = os.path.join(
+    #     args.output_dir, 
+    #     'epoch_{:05}_iteration_{:09}'.format(current_epoch, current_iteration)
+    #     )
     output_dir = os.path.join(
-        args.output_dir, 
-        'epoch_{:05}_iteration_{:09}'.format(current_epoch, current_iteration)
-        )
+        args.output_dir
+    )
     os.makedirs(output_dir, exist_ok=True)
 
 
