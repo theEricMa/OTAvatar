@@ -3,6 +3,8 @@
 
 ## Update
 
+April.30: The model weight is released. The dataset is also available in Google Drive, see below for detail.
+
 April.4: The preprocessed dataset is released, please see the `Data preparation` section. Some missing files are also uploaded.
 
 ## Get started
@@ -15,12 +17,12 @@ conda activate otavatar
 ```
 
 ### Pre-trained Models
-Download and copy EG3D FFHQ model (named by `ffhqrebalanced512-64.pth`) from [Baidu Netdisk](https://pan.baidu.com/s/1yXvLR2WvwdamGrWFnNefZw?pwd=CBSR) to the `pretrained` directory. It is the `ffhqrebalanced512-64.pkl` file obtained from [webpage](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/research/models/eg3d), and converted to `.pth` format using the [pkl2pth](https://github.com/oneThousand1000/EG3D-projector/blob/master/eg3d/convert_pkl_2_pth.py) script.
+Download and copy EG3D FFHQ model (named by `ffhqrebalanced512-64.pth`) from [Baidu Netdisk](https://pan.baidu.com/s/1yXvLR2WvwdamGrWFnNefZw?pwd=CBSR) or [Google Drive](https://drive.google.com/file/d/18RWTfeydaG_qm__rgYKPdxKcS0D_f2mr/view?usp=share_link) to the `pretrained` directory. It is the `ffhqrebalanced512-64.pkl` file obtained from [webpage](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/research/models/eg3d), and converted to `.pth` format using the [pkl2pth](https://github.com/oneThousand1000/EG3D-projector/blob/master/eg3d/convert_pkl_2_pth.py) script.
 
 Download [`arcface_resnet18.pth`](https://github.com/ronghuaiyang/arcface-pytorch) and save to the `pretrained` directory.
 
 ### Data preparation 
-We upload the processed dataset (named by `hdtf_lmdb_inv`) in [Baidu Netdisk](https://pan.baidu.com/s/1yXvLR2WvwdamGrWFnNefZw?pwd=CBSR) (password: CBSR). Then in the root directory,
+We upload the processed dataset (named by `hdtf_lmdb_inv`) in [Baidu Netdisk](https://pan.baidu.com/s/1yXvLR2WvwdamGrWFnNefZw?pwd=CBSR) and [Google Drive](https://drive.google.com/drive/folders/1kDIhBU_Cz_HyfYHAuETcDquCuZBDfqeu?usp=share_link). Then in the root directory,
 
 ```
 mkdir datasets
