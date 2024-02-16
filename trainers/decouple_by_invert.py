@@ -59,7 +59,8 @@ class FaceTrainer(BaseTrainer):
             self.train_G = True
             print('We train Generator')
 
-        self.ws_stdv = torch.ones_like(torch.from_numpy(np.load('pretrained/ws_std.npy')))
+        self.ws_stdv = torch.from_numpy(np.load('pretrained/ws_std.npy'))
+        #self.ws_stdv = torch.ones_like(torch.from_numpy(np.load('pretrained/ws_std.npy')))
 
     
     def _init_loss(self, opt):
